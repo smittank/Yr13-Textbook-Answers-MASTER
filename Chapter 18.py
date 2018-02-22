@@ -101,21 +101,17 @@ def count(x, nxs):
 
 #count(2, [2, 9, [2, 1, 13, 2], 8, [2, 6]])
 
-# EXERCISE 7 <ISSUES> ------------------------------------------------------------------
+# EXERCISE 7 ------------------------------------------------------------------
 
 def flatten(nxs):
-    flattened_list = []
-    for e in nxs:
-        if type(e) == type([]):
-            val = flatten(e)
-        else:
-            val = e
+    if nxs == []:
+        return nxs
+    if isinstance(nxs[0], list):                            # The list is passed as an argument to a recursive function to flatten the list
+        return flatten(nxs[0]) + flatten(nxs[1:])           # the function is recursively called with the sublists as the parameters until the entire list is flattened.
+    return nxs[:1] + flatten(nxs[1:])
+nxs = ([["this",["a",["thing"],"a"],"is"],["a","easy"]])    # I tested all of the given nested lists, but I can only work one test at a time.
+print("Flattened list is: ",flatten(nxs))                   # The flattened list is passed through the function and printed.
 
-        flattened_list.append(e)
-
-    print(flattened_list)
-
-#flatten((2, [2, 9, [2, 1, 13, 2], 8, [2, 6]]))
 
 # EXERCISE 8 ------------------------------------------------------------------
 
